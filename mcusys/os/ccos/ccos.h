@@ -217,8 +217,8 @@ extern void  OSIntExit (void);			//退出中断处理，并判断任务切换
 //-----------------------------------------------------------------------------
 //内部函数
 //由于程序中没有嵌套使用OS_ENTER_CRITICAL与OS_EXIT_CRITICAL，因此可以简单定义这两个函数
-#define OS_ENTER_CRI_S() 		__asm("cpsid i")	//__asm("nop;cpsid i")	//进入边界
-#define OS_EXIT_CRI_S()			__asm("cpsie i")	//__asm("cpsie i;nop")	//退出边界,不加NOP这句在有些时候会被优化没了
+#define OS_ENTER_CRI_S() 		__asm("cpsid i")	//__asm("nop;cpsid i")	//进入边界  汇编指令，关中断
+#define OS_EXIT_CRI_S()			__asm("cpsie i")	//__asm("cpsie i;nop")	//退出边界,不加NOP这句在有些时候会被优化没了   汇编指令，开中断
 #define OS_I_DisAll()			__asm("cpsid i")	//__asm("nop;cpsid i")
 #define OS_I_EnAll()			__asm("cpsie i")	//__asm("cpsie i;nop")
 
